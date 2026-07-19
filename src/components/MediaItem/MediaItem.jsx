@@ -5,7 +5,7 @@ function MediaItem({ item, media_type }) {
   const imagePath = item.poster_path || item.profile_path;
 
   return (
-    <div className="w-1/2 sm:w-1/3 lg:w-1/6 p-2 my-3">
+    <div className="w-1/2 sm:w-1/3 lg:w-1/6 p-2 my-3 -ml-11 me-9 md:ml-0 md:me-0">
       <Link to={`/itemdetails/${item.media_type}/${item.id}`}>
         <div className="group relative rounded-lg overflow-hidden transition-all duration-300 hover:-translate-y-3 hover:shadow-2xl">
           <img

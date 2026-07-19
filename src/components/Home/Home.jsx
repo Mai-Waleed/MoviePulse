@@ -23,7 +23,7 @@ function Home() {
   return (
     <>
       <div className="flex flex-wrap">
-        <div className="w-full md:w-1/3 flex items-center">
+        <div className="w-full md:w-1/3 flex items-center -ml-10 md:ml-0">
           <div>
             <div className="brdr w-1/4 mb-7"></div>
             <h2 className="text-3xl">
@@ -37,12 +37,12 @@ function Home() {
         </div>
 
         {trendingMovies.slice(0, 10).map((movie, index) => (
-          <MediaItem key={index} item={movie} media_type="movie"/>
+          <MediaItem key={index} item={movie} media_type="movie" />
         ))}
       </div>
 
       <div className="flex flex-wrap my-5">
-        <div className="w-full md:w-1/3 flex items-center">
+        <div className="w-full md:w-1/3 flex items-center -ml-10 md:ml-0">
           <div>
             <div className="brdr w-1/4 mb-7"></div>
             <h2 className="text-3xl">
@@ -61,7 +61,7 @@ function Home() {
       </div>
 
       <div className="flex flex-wrap my-5">
-        <div className="w-full md:w-1/3 flex items-center">
+        <div className="w-full md:w-1/3 flex items-center -ml-10 md:ml-0">
           <div>
             <div className="brdr w-1/4 mb-7"></div>
             <h2 className="text-3xl">

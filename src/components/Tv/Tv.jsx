@@ -34,7 +34,7 @@ function Tv() {
     <>
       {/* Airing Today */}
       <div className="flex flex-wrap my-10">
-        <div className="w-full md:w-1/3 flex items-center">
+        <div className="w-full md:w-1/3 flex items-center -ml-10 md:ml-0">
           <div>
             <div className="brdr w-1/4 mb-7"></div>
 
@@ -56,7 +56,7 @@ function Tv() {
 
       {/* On The Air */}
       <div className="flex flex-wrap my-10">
-        <div className="w-full md:w-1/3 flex items-center">
+        <div className="w-full md:w-1/3 flex items-center -ml-10 md:ml-0">
           <div>
             <div className="brdr w-1/4 mb-7"></div>
 
@@ -78,7 +78,7 @@ function Tv() {
 
       {/* Popular */}
       <div className="flex flex-wrap my-10">
-        <div className="w-full md:w-1/3 flex items-center">
+        <div className="w-full md:w-1/3 flex items-center -ml-10 md:ml-0">
           <div>
             <div className="brdr w-1/4 mb-7"></div>
 

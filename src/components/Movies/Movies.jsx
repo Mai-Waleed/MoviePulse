@@ -32,7 +32,7 @@ function Movies() {
   return (
     <>
       <div className="flex flex-wrap my-5">
-        <div className="w-full md:w-1/3 flex items-center">
+        <div className="w-full md:w-1/3 flex items-center -ml-10 md:ml-0">
           <div>
             <div className="brdr w-1/4 mb-7"></div>
             <h2 className="text-3xl">Now Playing</h2>
@@ -50,7 +50,7 @@ function Movies() {
       </div>
 
       <div className="flex flex-wrap">
-        <div className="w-full md:w-1/3 flex items-center">
+        <div className="w-full md:w-1/3 flex items-center -ml-10 md:ml-0">
           <div>
             <div className="brdr w-1/4 mb-7"></div>
             <h2 className="text-3xl">Upcoming Movies</h2>
@@ -68,7 +68,7 @@ function Movies() {
       </div>
 
       <div className="flex flex-wrap my-5">
-        <div className="w-full md:w-1/3 flex items-center">
+        <div className="w-full md:w-1/3 flex items-center -ml-10 md:ml-0">
           <div>
             <div className="brdr w-1/4 mb-7"></div>
             <h2 className="text-3xl">Popular Movies</h2>
