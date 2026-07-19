@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import {createBrowserRouter, RouterProvider} from "react-router-dom"
+import {createHashRouter, RouterProvider} from "react-router-dom"
 // import {Offline} from "react-detect-offline"
 import Layout from './components/Layout/Layout'
 import Home from './components/Home/Home'
@@ -11,7 +11,7 @@ import Tv from './components/Tv/Tv'
 import ItemDetails from './components/ItemDetails/ItemDetails'
 import NotFound from './components/NotFound/NotFound'
 
-let routers = createBrowserRouter([
+let routers = createHashRouter([
   {
     path: "/",
     element: <Layout />,
