@@ -2,7 +2,6 @@
   "name": "moviepulse",
   "private": true,
   "version": "0.0.0",
-  "homepage": "https://mai-waleed.github.io/MoviePulse",
   "type": "module",
   "scripts": {
     "dev": "vite",
