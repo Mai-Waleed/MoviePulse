@@ -211,37 +211,40 @@ function ItemDetails() {
             )}
           </div>
 
-          {/* Homepage */}
-          {itemDetails.homepage && (
-            <a
-              href={itemDetails.homepage}
-              target="_blank"
-              rel="noreferrer"
-              className="btn inline-block mt-8 px-6 py-3 rounded-lg transition me-5"
-            >
-              Visit Homepage
-            </a>
-          )}
+          <div className="flex flex-col sm:flex-row gap-4 mt-8">
+            {/* Homepage */}
+            {itemDetails.homepage && (
+              <a
+                href={itemDetails.homepage}
+                target="_blank"
+                rel="noreferrer"
+                className="btn w-full sm:w-auto text-center px-6 py-3 rounded-lg transition"
+              >
+                Visit Homepage
+              </a>
+            )}
 
-          {/* Watch Trailer */}
-          {/* {trailerKey && (
-            <a
-              href={`https://www.youtube.com/watch?v=${trailerKey}`}
-              target="_blank"
-              rel="noreferrer"
-              className="btn inline-block mt-4 ml-4 px-6 py-3 rounded-lg transition"
-            >
-              ▶ Watch Trailer
-            </a>
-          )} */}
-          {trailerKey && (
-            <button
-              onClick={() => setShowTrailer(true)}
-              className="btn mt-8 px-6 py-3 rounded-lg ml-5"
-            >
-              ▶ Watch Trailer
-            </button>
-          )}
+            {/* Watch Trailer */}
+            {/* {trailerKey && (
+              <a
+                href={`https://www.youtube.com/watch?v=${trailerKey}`}
+                target="_blank"
+                rel="noreferrer"
+                className="btn inline-block mt-4 ml-4 px-6 py-3 rounded-lg transition"
+              >
+                ▶ Watch Trailer
+              </a>
+            )} */}
+            {trailerKey && (
+              <button
+                onClick={() => setShowTrailer(true)}
+                className="btn w-full sm:w-auto px-6 py-3 rounded-lg transition"
+              >
+                ▶ Watch Trailer
+              </button>
+            )}
+          </div>
+
         </div>
       </div>
 
