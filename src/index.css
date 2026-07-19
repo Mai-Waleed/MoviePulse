@@ -1,0 +1,127 @@
+@import url('https://fonts.googleapis.com/css2?family=Galindo&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Creepster&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import "tailwindcss";
+
+:root {
+  --bg-color: #131722;
+  --main-font: 'Creepster', cursive;
+  --second-font: 'Galindo', sans-serif;
+  --third-font: 'Montserrat', sans-serif;
+  --light-bg: #24baef;
+  --font-color: #fff;
+  --second-font-color: #949cb0;
+  --border-color: #a8a8a83d;
+}
+
+body {
+  background-color: var(--bg-color);
+  font-family: var(--main-font);
+  color: var(--font-color);
+}
+
+a {
+  color: var(--font-color);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--light-bg);
+  transition: color 0.5s;
+}
+
+/* button {
+  background-color: var(--light-bg);
+  color: var(--font-color);
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+} */
+
+.second-font {
+  font-family: var(--second-font);
+}
+
+.third-font {
+  font-family: var(--third-font);
+}
+
+.brdr {
+  height: 1px;
+  border: 1px solid var(--border-color);
+}
+
+.btn {
+  background-color: var(--light-bg);
+  color: var(--font-color)
+}
+
+.btn:hover {
+  color: var(--bg-color);
+  transition: color 0.5s;
+}
+
+.vote {
+  color: var(--light-bg);
+  background-color: var(--bg-color);
+  /* color: var(--font-color);
+  background-color: var(--light-bg); */
+}
+
+.light-bg {
+  color: var(--light-bg);
+}
+
+.my-input {
+  background-color: transparent;
+  border: 1px solid var(--border-color);
+  color: var(--font-color);
+}
+
+.offline {
+  position: fixed;
+  bottom: 25px;
+  left: 25px;
+  z-index: 9999;
+
+  display: flex;
+  align-items: center;
+  gap: 15px;
+
+  width: 340px;
+  padding: 18px;
+
+  background: #1a1f2b;
+  border: 1px solid rgba(255,255,255,.08);
+  border-left: 5px solid var(--light-bg);
+  border-radius: 16px;
+
+  box-shadow: 0 15px 35px rgba(0,0,0,.35);
+  animation: slideUp .4s ease;
+}
+
+.offline-icon{
+  width:50px;
+  height:50px;
+  border-radius:50%;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background: var(--light-bg);
+  color: var(--font-color);
+  font-size:22px;
+}
+
+.offline h4{
+  margin:0;
+  font-family: var(--second-font);
+  font-size:18px;
+  font-weight:700;
+}
+
+.offline p{
+  margin-top:4px;
+  color:#b4b9c7;
+  font-size:14px;
+  font-family: var(--third-font);
+}

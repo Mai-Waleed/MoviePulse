@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <!-- Dark Background Layer matching your exact color -->
+  <rect width="100%" height="100%" fill="#131722" />
+
+  <!-- 
+    Optimized Favicon Composition Container:
+    The padding has been stripped down heavily so the logo fills the viewport.
+    Perfect for small crisp rendering (16x16, 32x32) inside your React project tabs!
+  -->
+  <g transform="translate(106, 66)">
+    
+    <!-- 1. Thick Outer Play Button Border Accent (Vibrant #24baef) -->
+    <path d="M 40,30 L 260,150 A 35,35 0 0,1 260,210 L 40,330 A 35,35 0 0,1 0,300 L 0,60 A 35,35 0 0,1 40,30 Z" 
+          fill="none" 
+          stroke="#24baef" 
+          stroke-width="24" 
+          stroke-linecap="round" 
+          stroke-linejoin="round" />
+
+    <!-- 2. Dark Background Masking Line to cleanly slice through the play button border -->
+    <path d="M -90,180 L 15,180 L 40,110 L 70,270 L 105,130 L 135,220 L 160,160 L 185,195 L 210,180 L 390,180" 
+          fill="none" 
+          stroke="#131722" 
+          stroke-width="44" 
+          stroke-linecap="round" 
+          stroke-linejoin="round" />
+
+    <!-- 3. Glowing Neon Core Base Layer (#24baef) -->
+    <path d="M -90,180 L 15,180 L 40,110 L 70,270 L 105,130 L 135,220 L 160,160 L 185,195 L 210,180 L 390,180" 
+          fill="none" 
+          stroke="#24baef" 
+          stroke-width="22" 
+          stroke-linecap="round" 
+          stroke-linejoin="round" />
+
+    <!-- 4. Ultra-Bright Core Overlay (White line to ensure high visibility at micro scales) -->
+    <path d="M -90,180 L 15,180 L 40,110 L 70,270 L 105,130 L 135,220 L 160,160 L 185,195 L 210,180 L 390,180" 
+          fill="none" 
+          stroke="#ffffff" 
+          stroke-width="8" 
+          stroke-linecap="round" 
+          stroke-linejoin="round" />
+
+    <!-- 5. High-Visibility Digital Spark Centerpiece -->
+    <circle cx="105" cy="130" r="16" fill="#ffffff" />
+    <circle cx="105" cy="130" r="30" fill="none" stroke="#24baef" stroke-width="8" />
+  </g>
+</svg>
