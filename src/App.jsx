@@ -12,17 +12,21 @@ import ItemDetails from './components/ItemDetails/ItemDetails'
 import NotFound from './components/NotFound/NotFound'
 
 let routers = createBrowserRouter([
-  { path: '/', element: <Layout/>, children: [
-    { index: true, element: <Home/> },
-    // { path: 'login', element: <Login/> },
-    // { path: 'register', element: <Register/> },
-    { path: 'movies', element: <Movies/> },
-    { path: 'people', element: <People/> },
-    { path: 'itemdetails/:media_type/:id', element: <ItemDetails/>},
-    { path: 'tv', element: <Tv/> },
-    { path: '*', element: <NotFound/>}
-  ]}
-])
+  {
+    path: "/MoviePulse/",
+    element: <Layout />,
+    children: [
+      { index: true, element: <Home /> },
+      // { path: 'login', element: <Login/> },
+      // { path: 'register', element: <Register/> },
+      { path: "movies", element: <Movies /> },
+      { path: "people", element: <People /> },
+      { path: "itemdetails/:media_type/:id", element: <ItemDetails /> },
+      { path: "tv", element: <Tv /> },
+      { path: "*", element: <NotFound /> },
+    ],
+  },
+]);
 
 function App() {
  return (
