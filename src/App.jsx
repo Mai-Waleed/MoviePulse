@@ -13,16 +13,14 @@ import NotFound from './components/NotFound/NotFound'
 
 let routers = createBrowserRouter([
   {
-    path: "/MoviePulse/",
+    path: "/",
     element: <Layout />,
     children: [
       { index: true, element: <Home /> },
-      // { path: 'login', element: <Login/> },
-      // { path: 'register', element: <Register/> },
       { path: "movies", element: <Movies /> },
       { path: "people", element: <People /> },
-      { path: "itemdetails/:media_type/:id", element: <ItemDetails /> },
       { path: "tv", element: <Tv /> },
+      { path: "itemdetails/:media_type/:id", element: <ItemDetails /> },
       { path: "*", element: <NotFound /> },
     ],
   },

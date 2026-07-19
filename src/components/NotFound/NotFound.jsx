@@ -14,7 +14,7 @@ function NotFound() {
         </p>
 
         <Link
-          to="/MoviePulse/"
+          to="/"
           className="btn inline-block mt-8 px-6 py-3 rounded-xl second-font"
         >
           Back Home
