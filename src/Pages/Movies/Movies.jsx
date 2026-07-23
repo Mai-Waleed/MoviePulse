@@ -1,32 +1,49 @@
-import React, { useEffect, useState } from 'react'
-import axios from 'axios'
-import MediaItem from '../MediaItem/MediaItem'
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import MediaItem from "../../components/MediaItem/MediaItem";
+import Loading from "../../components/Loading/Loading";
 
 function Movies() {
   const [upComing, setUpComing] = useState([]);
   const [nowPlaying, setNowPlaying] = useState([]);
-  const [popular, setPopular] = useState([])
+  const [popular, setPopular] = useState([]);
 
-  async function getMovies (type, callback) {
-    try {
-      const { data } = await axios.get(
-        `https://api.themoviedb.org/3/movie/${type}?api_key=42d680170bbe94ae3b3f58a4c434cd19`,
-      );
-      callback(
-        data.results.map((movie) => ({
-          ...movie,
-          media_type: "movie",
-        })),
-      );
-    } catch (error) {
-      console.log(error);
-    }
+  const [loading, setLoading] = useState(false);
+
+  async function getMovies(type) {
+    const { data } = await axios.get(
+      `https://api.themoviedb.org/3/movie/${type}?api_key=42d680170bbe94ae3b3f58a4c434cd19`,
+    );
+
+    return data.results.map((movie) => ({
+      ...movie,
+      media_type: "movie",
+    }));
   }
 
   useEffect(() => {
-    getMovies("popular", setPopular);
-    getMovies("now_playing", setNowPlaying);
-    getMovies("upcoming", setUpComing);
+    async function fetchData() {
+      try {
+        setLoading(true);
+
+        const [popularMovies, nowPlayingMovies, upcomingMovies] =
+          await Promise.all([
+            getMovies("popular"),
+            getMovies("now_playing"),
+            getMovies("upcoming"),
+          ]);
+
+        setPopular(popularMovies);
+        setNowPlaying(nowPlayingMovies);
+        setUpComing(upcomingMovies);
+      } catch (error) {
+        console.log(error);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    fetchData();
   }, []);
 
   return (
@@ -44,9 +61,13 @@ function Movies() {
           </div>
         </div>
 
-        {nowPlaying.slice(0, 10).map((movie, index) => (
-          <MediaItem key={index} item={movie} />
-        ))}
+        { loading ? (
+          <Loading/>
+        ) : ( 
+          nowPlaying.slice(0, 10).map((movie) => (
+          <MediaItem key={movie.id} item={movie} />
+        ))
+        )}
       </div>
 
       <div className="flex flex-wrap">
@@ -62,9 +83,9 @@ function Movies() {
           </div>
         </div>
 
-        {upComing.slice(0, 10).map((movie, index) => (
-          <MediaItem key={index} item={movie} />
-        ))}
+        { loading ? (<Loading/>) : (upComing.slice(0, 10).map((movie) => (
+          <MediaItem key={movie.id} item={movie} />
+        )))}
       </div>
 
       <div className="flex flex-wrap my-5">
@@ -80,12 +101,12 @@ function Movies() {
           </div>
         </div>
 
-        {popular.slice(0, 10).map((movie, index) => (
-          <MediaItem key={index} item={movie} />
-        ))}
+        { loading ? (<Loading/>) : (popular.slice(0, 10).map((movie) => (
+          <MediaItem key={movie.id} item={movie} />
+        )))}
       </div>
     </>
   );
 }
 
-export default Movies
+export default Movies;

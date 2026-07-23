@@ -1,25 +1,44 @@
 import React, {useState, useEffect} from 'react'
 import axios from 'axios'
-import MediaItem from '../MediaItem/MediaItem'
+import MediaItem from '../../components/MediaItem/MediaItem'
+import Loading from '../../components/Loading/Loading';
 
 function Home() {
     const [trendingMovies, setTrendingMovies] = useState([]);
     const [trendingTv, setTrendingTv] = useState([]);
     const [trendingPeople, setTrendingPeople] = useState([]);
 
-    async function getTrending(mediaType, callback) {
+    const [loading, setLoading] = useState(false);
+
+    async function getTrending(mediaType) {
         let { data } = await axios.get(
         `https://api.themoviedb.org/3/trending/${mediaType}/week?api_key=42d680170bbe94ae3b3f58a4c434cd19`,
         );
-        callback(data.results);
+        return data.results;
     }
 
     useEffect(() => {
-        getTrending("movie", setTrendingMovies);
-        getTrending("tv", setTrendingTv);
-        getTrending("person", setTrendingPeople);
-    }, []);
+        async function fetchData() {
+          try {
+            setLoading(true);
 
+            const [movies, tv, people] = await Promise.all([
+              getTrending("movie"),
+              getTrending("tv"),
+              getTrending("person"),
+            ]);
+
+            setTrendingMovies(movies);
+            setTrendingTv(tv);
+            setTrendingPeople(people);
+          } finally {
+            setLoading(false);
+          }
+        }
+
+        fetchData();
+    }, []);
+    
   return (
     <>
       <div className="flex flex-wrap">
@@ -36,9 +55,15 @@ function Home() {
           </div>
         </div>
 
-        {trendingMovies.slice(0, 10).map((movie, index) => (
-          <MediaItem key={index} item={movie} media_type="movie" />
-        ))}
+        {loading ? (
+          <Loading />
+        ) : (
+          trendingMovies
+            .slice(0, 10)
+            .map((movie) => (
+              <MediaItem key={movie.id} item={movie} media_type="movie" />
+            ))
+        )}
       </div>
 
       <div className="flex flex-wrap my-5">
@@ -55,9 +80,13 @@ function Home() {
           </div>
         </div>
 
-        {trendingTv.slice(0, 10).map((tv, index) => (
-          <MediaItem key={index} item={tv} />
-        ))}
+        {loading ? (
+          <Loading />
+        ) : (
+          trendingTv
+            .slice(0, 10)
+            .map((tv) => <MediaItem key={tv.id} item={tv} />)
+        )}
       </div>
 
       <div className="flex flex-wrap my-5">
@@ -74,9 +103,13 @@ function Home() {
           </div>
         </div>
 
-        {trendingPeople.slice(0, 10).map((person, index) => (
-          <MediaItem key={index} item={person} />
-        ))}
+        {loading ? (
+          <Loading />
+        ) : (
+          trendingPeople
+            .slice(0, 10)
+            .map((person) => <MediaItem key={person.id} item={person} />)
+        )}
       </div>
     </>
   );

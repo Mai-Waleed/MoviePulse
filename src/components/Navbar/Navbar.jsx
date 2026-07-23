@@ -1,6 +1,7 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Logo from "../../assets/MoviePulse.svg"
+import Search from "../Search/Search"
 
 function Navbar() {
   const navigate = useNavigate();
@@ -43,6 +44,7 @@ function Navbar() {
 
         {/* Right Side */}
         <div className="flex flex-col items-center gap-5 lg:flex-row">
+          <Search />
           {/* Social Icons */}
           <div className="flex items-center gap-4 text-xl">
             <a href="#" target="_blank">

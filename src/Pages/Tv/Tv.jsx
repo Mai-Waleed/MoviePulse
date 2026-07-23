@@ -1,33 +1,49 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import MediaItem from "../MediaItem/MediaItem";
+import MediaItem from "../../components/MediaItem/MediaItem";
+import Loading from "../../components/Loading/Loading"
 
 function Tv() {
   const [airingToday, setAiringToday] = useState([]);
   const [onTheAir, setOnTheAir] = useState([]);
   const [popular, setPopular] = useState([]);
 
-  async function getTv(type, callback) {
-    try {
+  const [loading, setLoading] = useState(false)
+
+  async function getTv(type) {
       const { data } = await axios.get(
         `https://api.themoviedb.org/3/tv/${type}?api_key=42d680170bbe94ae3b3f58a4c434cd19`,
       );
 
-      callback(
-        data.results.map((item) => ({
+        return data.results.map((item) => ({
           ...item,
           media_type: "tv",
-        })),
-      );
-    } catch (error) {
-      console.log(error);
-    }
+        }));
   }
 
   useEffect(() => {
-    getTv("airing_today", setAiringToday);
-    getTv("on_the_air", setOnTheAir);
-    getTv("popular", setPopular);
+      async function fetchData() {
+    try {
+      setLoading(true);
+
+      const [airingTodaySeries, onTheAirSeries, popularSeries] =
+        await Promise.all([
+          getTv("airing_today"),
+    getTv("on_the_air"),
+    getTv("popular"),
+        ])
+
+        setAiringToday(airingTodaySeries);
+        setOnTheAir(onTheAirSeries);
+        setPopular(popularSeries);
+    } catch (error) {
+      console.log(error)
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  fetchData()
   }, []);
 
   return (
@@ -49,9 +65,13 @@ function Tv() {
           </div>
         </div>
 
-        {airingToday.slice(0, 10).map((tv) => (
+        { loading ? (
+          <Loading/>
+        ) : (
+          airingToday.slice(0, 10).map((tv) => (
           <MediaItem key={tv.id} item={tv} />
-        ))}
+        ))
+        )}
       </div>
 
       {/* On The Air */}
@@ -71,9 +91,13 @@ function Tv() {
           </div>
         </div>
 
-        {onTheAir.slice(0, 10).map((tv) => (
+        { loading ? (
+          <Loading/>
+        ) : (
+          onTheAir.slice(0, 10).map((tv) => (
           <MediaItem key={tv.id} item={tv} />
-        ))}
+        ))
+        )}
       </div>
 
       {/* Popular */}
@@ -93,9 +117,13 @@ function Tv() {
           </div>
         </div>
 
-        {popular.slice(0, 10).map((tv) => (
+        { loading ? (
+          <Loading/>
+        ) : (
+          popular.slice(0, 10).map((tv) => (
           <MediaItem key={tv.id} item={tv} />
-        ))}
+        ))
+        )}
       </div>
     </>
   );

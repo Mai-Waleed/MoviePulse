@@ -1,26 +1,42 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import MediaItem from "../MediaItem/MediaItem";
+import MediaItem from "../../components/MediaItem/MediaItem";
+import Loading from "../../components/Loading/Loading";
 
 function People() {
   const [people, setPeople] = useState([]);
+  const [loading, setLoading] = useState(false);
 
-  async function getPopularPeople(callback) {
-    let { data } = await axios.get(
+  async function getPopularPeople() {
+    const { data } = await axios.get(
       "https://api.themoviedb.org/3/person/popular?api_key=42d680170bbe94ae3b3f58a4c434cd19",
     );
 
-    callback(
-      data.results.map((item) => ({
-        ...item,
-        media_type: "person",
-      })),
-    );
+    return data.results.map((item) => ({
+      ...item,
+      media_type: "person",
+    }));
   }
 
   useEffect(() => {
-    getPopularPeople(setPeople);
+    async function fetchData() {
+      try {
+        setLoading(true);
+        // await new Promise((resolve) => setTimeout(resolve, 2000));
+
+        const peopleData = await getPopularPeople();
+        setPeople(peopleData);
+      } catch (error) {
+        console.log(error);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    fetchData();
   }, []);
+
+  if (loading) return <Loading />;
 
   return (
     <>
@@ -41,8 +57,8 @@ function People() {
           </div>
         </div>
 
-        {people.map((person, index) => (
-          <MediaItem key={index} item={person} media_type="person" />
+        {people.map((person) => (
+          <MediaItem key={person.id} item={person} />
         ))}
       </div>
     </>

@@ -2,14 +2,14 @@ import { useState } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 // import {Offline} from "react-detect-offline"
 import Layout from "./components/Layout/Layout";
-import Home from "./components/Home/Home";
+import Home from "./Pages/Home/Home";
 // import Login from './components/Login/Login'
 // import Register from './components/Register/Register'
-import Movies from "./components/Movies/Movies";
-import People from "./components/People/People";
-import Tv from "./components/Tv/Tv";
+import Movies from "./Pages/Movies/Movies";
+import People from "./Pages/People/People";
+import Tv from "./Pages/Tv/Tv";
 import ItemDetails from "./components/ItemDetails/ItemDetails";
-import NotFound from "./components/NotFound/NotFound";
+import NotFound from "./Pages/NotFound/NotFound";
 
 let routers = createBrowserRouter([
   {
